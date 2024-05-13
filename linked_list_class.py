@@ -12,7 +12,7 @@ class Node():
 class Doublylinkedlist():
     '''This creates the inital list'''
     def __init__(self, track_name, image_location, music_location):
-        new_node = Node(value)
+        new_node = Node(track_name, image_location, music_location)
         self.head = new_node
         self.tail = new_node
         self.length = 1
@@ -21,7 +21,7 @@ class Doublylinkedlist():
         '''This function will cycle through the list and print all the nodes values'''
         temp = self.head
         while temp is not None:
-            print(temp.value)
+            print(temp.track_name, temp.image_location, temp.music_location)
             temp = temp.next
 
     def append(self, value):

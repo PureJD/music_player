@@ -1,13 +1,17 @@
+'''All nodes are going to store the track name, image and song.'''
+
 class Node():
     '''This creates nodes as it is called in various functions. It creates a previous value as well as a next'''
-    def __init__(self, value):
-        self.value = value
+    def __init__(self, track_name, image_location, music_location):
+        self.track_name = track_name
+        self.image_location = image_location
+        self.music_location = music_location
         self.next = None
         self.prev = None
-    
+
 class Doublylinkedlist():
     '''This creates the inital list'''
-    def __init__(self, value):
+    def __init__(self, track_name, image_location, music_location):
         new_node = Node(value)
         self.head = new_node
         self.tail = new_node

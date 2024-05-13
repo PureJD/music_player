@@ -2,7 +2,8 @@
 
 class Node():
     '''This creates nodes as it is called in various functions. It creates a previous value as well as a next'''
-    def __init__(self, track_name, image_location, music_location):
+    def __init__(self, artist, track_name, image_location, music_location):
+        self.artist = artist
         self.track_name = track_name
         self.image_location = image_location
         self.music_location = music_location
@@ -11,8 +12,8 @@ class Node():
 
 class Doublylinkedlist():
     '''This creates the inital list'''
-    def __init__(self, track_name, image_location, music_location):
-        new_node = Node(track_name, image_location, music_location)
+    def __init__(self, artist, track_name, image_location, music_location):
+        new_node = Node(artist, track_name, image_location, music_location)
         self.head = new_node
         self.tail = new_node
         self.length = 1
@@ -20,13 +21,16 @@ class Doublylinkedlist():
     def print_list(self):
         '''This function will cycle through the list and print all the nodes values'''
         temp = self.head
+        current_track_number = 1
         while temp is not None:
-            print(temp.track_name, temp.image_location, temp.music_location)
+            print(f'TRACK NUMBER {current_track_number}: ARTIST: {temp.artist} SONG: {temp.track_name}')
+            current_track_number += 1
             temp = temp.next
+        current_track_number = 1
 
-    def append(self, value):
+    def append(self, artist, track_name, image_location, music_location):
         '''This function will create a new node and point the next and previous values before moving the tail across to the end'''
-        new_node = Node(value)
+        new_node = Node(artist, track_name, image_location, music_location)
         if self.head == None:
             self.head = new_node
             self.tail = new_node

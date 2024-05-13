@@ -33,8 +33,15 @@ while main_loop:
         except:
             print('Please enter a valid value')
         music_library.append(user_artist_selection, user_track_selection, user_image_location, user_song_location)
+    elif user_input == 3:
+        try:
+            music_library.print_list()
+            user_delete_selection = int(input('Which track number would you like to delete from the list? '))
+            music_library.remove(user_delete_selection -1)
+        except:
+            print('Please input a track number')
                                        
-
+    
     
 
 

@@ -47,8 +47,8 @@ class Doublylinkedlist():
         if self.length == 0:
             return None
         if self.length == 1:
-            self.head == None
-            self.tail == None
+            self.head = None
+            self.tail = None
         else:
             temp = self.tail
             self.tail = self.tail.prev

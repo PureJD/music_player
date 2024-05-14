@@ -1,3 +1,4 @@
+from random import random
 '''All nodes are going to store the track name, image and song.'''
 
 class Node():
@@ -149,3 +150,30 @@ class Doublylinkedlist():
         after.prev = None
         self.length -= 1
         return True
+    
+
+    
+    '''def shuffle(self):
+        start = self.head
+        end = self.tail
+        while end is not None:
+            end = end.next
+        start = start.next
+        end = end.prev
+        start.prev.next = end.next
+        end.next.prev = start.prev
+        while start != end:
+            start.next = start.prev
+            start = start.prev
+            end.prev = end.next
+            end = end.next
+            self.head = start
+            self.tail = end
+            self.head.prev = None
+            self.tail.next = None'''
+
+
+    
+
+    
+        

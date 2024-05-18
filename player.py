@@ -2,32 +2,44 @@ from linked_list_class import *
 import pygame
 import time
 
+WIDTH, HEIGHT = 950,830
+
 '''The functionality of this will initially be completed in terminal.
 Following this, a pygame window will be added with music playing and images.
 Following this, investigations into alternative GUI will take place followed by
 the addition of things such as the play bar and other elements'''
 
-def display_track_image():
-    current_track = pygame.image.load('track_images/hopeless.jpg')
-    screen.blit(current_track, (0,0))
+def change_track(current_track):
+    current_node = music_library.get(current_track)
+    current_track = pygame.image.load(current_node.image_location)
+    screen.blit(current_track, (WIDTH / 2 - 200, HEIGHT / 2 - 200))
     pygame.display.flip()
-
+    current_track = pygame.mixer.Sound(current_node.music_location)
+    current_track.play()
+    
+    
+    
 # Initial linked list nodes for test purposes
-music_library = Doublylinkedlist('the butcher', 'Sausage', 'test', 'test', 100)
-music_library.append('workers', 'desks are for men', 'test', 'test', 100)
-music_library.append('horses', 'book worms read shoes', 'test', 'test', 100)
+music_library = Doublylinkedlist('The Hopeless', 'Love song', 'track_images/hopeless.jpg', 'music_tracks/hopeless.wav', 11)
+music_library.append('The shovel knights', 'shovel rock', 'track_images/shovel_rockers.jpg', 'music_tracks/shovel_rockers.wav', 8)
+music_library.append('Shorties', 'Im small but you are tall', 'track_images/small_tall.jpg', 'music_tracks/small_tall.wav', 100)
 
 #pygame setup 
 pygame.init()
-WIDTH, HEIGHT = 950,830
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption('Music Player')
 player_background_image = pygame.image.load('track_images/player_image.jpg')
 screen.blit(player_background_image, (0, 0))
 pygame.display.flip()
 
+#pygame audio mixer setup 
+pygame.mixer.init()
+pygame.mixer.init(44100, -16, 2, 2048)
+pygame.mixer.set_num_channels(2)
 
 
+
+current_track = 0
 
 main_loop = True
 while main_loop:
@@ -39,9 +51,18 @@ while main_loop:
         if event.type == pygame.QUIT:
             main_loop = False
     
-    #test code for chaing track image
+    #test code for chaing track image   CURRENTLY BROKEN. FIX REQUIRED
     time.sleep(3)
-    display_track_image()
+    change_track(current_track)
+    time.sleep(11)
+    current_track += 1
+    change_track(current_track)
+    time.sleep(11)
+    current_track += 1
+    change_track(current_track)
+    time.sleep(11)
+    
+    
 
     # Displaying terminal-based input menu and handling user input
     try:

@@ -11,14 +11,19 @@ music_library = Doublylinkedlist('the butcher', 'Sausage', 'test', 'test', 100)
 music_library.append('workers', 'desks are for men', 'test', 'test', 100)
 music_library.append('horses', 'book worms read shoes', 'test', 'test', 100)
 
+#pygame setup 
 pygame.init()
-WIDTH, HEIGHT = 1000, 400
+WIDTH, HEIGHT = 950,830
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption('Music Player')
+player_background_image = pygame.image.load('track_images/player_image.jpg')
+screen.blit(player_background_image, (0, 0))
+pygame.display.flip()
+
 
 main_loop = True
 while main_loop:
-    screen.fill((255, 255, 255))
+    
 
     # Event handling
     for event in pygame.event.get():

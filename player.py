@@ -41,6 +41,11 @@ while main_loop:
             music_library.remove(user_delete_selection -1)
         except:
             print('Please input a track number')
+    elif user_input == 4:
+        try:
+            music_library.shuffle()
+        except:
+            print('Error attempting to shuffle tracks. Minimum 2 tracks required to shuffle')
             
                                        
     

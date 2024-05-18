@@ -151,26 +151,37 @@ class Doublylinkedlist():
         self.length -= 1
         return True
     
+    def reverse(self):
+        '''This method will swap the head and tail. It will then use variables to move through the list and the temp variable changes the pointer for each node'''
+        if self.length < 2: 
+            return False
+        current = self.head
+        prev = None
+        self.tail = self.head
+        while current:
+            next_node = current.next
+            current.next = prev
+            prev = current
+            current = next_node
+        self.head = prev
+        return True
 
-    
-    '''def shuffle(self):
-        start = self.head
-        end = self.tail
-        while end is not None:
-            end = end.next
-        start = start.next
-        end = end.prev
-        start.prev.next = end.next
-        end.next.prev = start.prev
-        while start != end:
-            start.next = start.prev
-            start = start.prev
-            end.prev = end.next
-            end = end.next
-            self.head = start
-            self.tail = end
-            self.head.prev = None
-            self.tail.next = None'''
+    def shuffle(self):
+        '''This function will shuffle the nodes in a list by means of reversing the list, finding the middle two digits, splitting the list into two and then reattaching the first half to the end. If a more complete shuffle is required, run the splitting and reattaching in a loop. Do not run the whole function again as it will undo the shuffle.  '''
+        if self.length < 2:
+            return None
+        if self.length == 2 or self.length == 3:
+            return self.reverse()
+        self.reverse()
+        temp_right = self.find_middle_node()
+        temp_left = temp_right.prev
+        temp_right.prev = None
+        temp_left.next = None
+        self.tail.next = self.head
+        self.head.prev = self.tail
+        self.head = temp_right
+        self.tail = temp_left
+        return True
 
 
     

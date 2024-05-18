@@ -1,10 +1,16 @@
 from linked_list_class import *
 import pygame
+import time
 
 '''The functionality of this will initially be completed in terminal.
 Following this, a pygame window will be added with music playing and images.
 Following this, investigations into alternative GUI will take place followed by
 the addition of things such as the play bar and other elements'''
+
+def display_track_image():
+    current_track = pygame.image.load('track_images/hopeless.jpg')
+    screen.blit(current_track, (0,0))
+    pygame.display.flip()
 
 # Initial linked list nodes for test purposes
 music_library = Doublylinkedlist('the butcher', 'Sausage', 'test', 'test', 100)
@@ -21,14 +27,21 @@ screen.blit(player_background_image, (0, 0))
 pygame.display.flip()
 
 
+
+
 main_loop = True
 while main_loop:
+    
     
 
     # Event handling
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             main_loop = False
+    
+    #test code for chaing track image
+    time.sleep(3)
+    display_track_image()
 
     # Displaying terminal-based input menu and handling user input
     try:

@@ -55,6 +55,12 @@ while main_loop:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             main_loop = False
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_SPACE:
+                main_loop = False
+            
+            
+            
     
     #test code for chaing track image   CURRENTLY BROKEN. FIX REQUIRED
     time.sleep(3)

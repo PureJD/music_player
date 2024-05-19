@@ -9,20 +9,22 @@ Following this, a pygame window will be added with music playing and images.
 Following this, investigations into alternative GUI will take place followed by
 the addition of things such as the play bar and other elements'''
 
-def change_track(current_track):
+def change_track(current_track, track_length):
+    '''This function will retrieve the required track information from the node'''
     current_node = music_library.get(current_track)
     current_track = pygame.image.load(current_node.image_location)
     screen.blit(current_track, (WIDTH / 2 - 200, HEIGHT / 2 - 200))
     pygame.display.flip()
     current_track = pygame.mixer.Sound(current_node.music_location)
     current_track.play()
-    
+    time.sleep(track_length + 1)
+    return True
     
     
 # Initial linked list nodes for test purposes
 music_library = Doublylinkedlist('The Hopeless', 'Love song', 'track_images/hopeless.jpg', 'music_tracks/hopeless.wav', 11)
 music_library.append('The shovel knights', 'shovel rock', 'track_images/shovel_rockers.jpg', 'music_tracks/shovel_rockers.wav', 8)
-music_library.append('Shorties', 'Im small but you are tall', 'track_images/small_tall.jpg', 'music_tracks/small_tall.wav', 100)
+music_library.append('Shorties', 'Im small but you are tall', 'track_images/small_tall.jpg', 'music_tracks/small_tall.wav', 7)
 
 #pygame setup 
 pygame.init()
@@ -40,6 +42,9 @@ pygame.mixer.set_num_channels(2)
 
 
 current_track = 0
+current_node = music_library.get(current_track)
+
+
 
 main_loop = True
 while main_loop:
@@ -53,14 +58,14 @@ while main_loop:
     
     #test code for chaing track image   CURRENTLY BROKEN. FIX REQUIRED
     time.sleep(3)
-    change_track(current_track)
-    time.sleep(11)
+    change_track(current_track, current_node.track_length)
+    
     current_track += 1
-    change_track(current_track)
-    time.sleep(11)
+    change_track(current_track, current_node.track_length)
+   
     current_track += 1
-    change_track(current_track)
-    time.sleep(11)
+    change_track(current_track, current_node.track_length)
+  
     
     
 

@@ -182,6 +182,13 @@ class Doublylinkedlist():
         self.head = temp_right
         self.tail = temp_left
         return True
+    
+    def length(self):
+        return self.length
+            
+    
+    
+
 
 
     
